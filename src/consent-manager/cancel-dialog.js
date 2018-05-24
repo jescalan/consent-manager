@@ -1,9 +1,9 @@
-import React, {PureComponent} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
 import Dialog from './dialog'
 import {DefaultButton, RedButton} from './buttons'
 
-export default class CancelDialog extends PureComponent {
+export default class CancelDialog extends Component {
   static displayName = 'CancelDialog'
 
   static propTypes = {

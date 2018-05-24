@@ -1,4 +1,4 @@
-import {css} from 'react-emotion'
+import {css} from 'preact-emotion'
 
 export default css`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

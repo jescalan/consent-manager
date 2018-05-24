@@ -1,13 +1,13 @@
-import React, {PureComponent} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled from 'preact-emotion'
 import fontStyles from './font-styles'
 
 const Root = styled('div')`
   ${fontStyles};
   position: relative;
-  padding: 8px;
-  padding-right: 40px;
+  padding: 12px;
+  padding-right: 115px;
   background: ${props => props.backgroundColor};
   color: ${props => props.textColor};
   text-align: center;
@@ -38,20 +38,22 @@ const P = styled('p')`
 
 const CloseButton = styled('button')`
   position: absolute;
-  right: 8px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  padding: 8px;
+  padding: 12px 20px;
   border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  font-size: 14px;
+  background: white;
+  color: black;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9em;
   line-height: 1;
   cursor: pointer;
 `
 
-export default class Banner extends PureComponent {
+export default class Banner extends Component {
   static displayName = 'Banner'
 
   static propTypes = {
@@ -96,7 +98,7 @@ export default class Banner extends PureComponent {
           aria-label="Accept policy"
           onClick={onAccept}
         >
-          ✕
+          Accept
         </CloseButton>
       </Root>
     )

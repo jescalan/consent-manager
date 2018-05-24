@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
-import styled, {css} from 'react-emotion'
+import styled, {css} from 'preact-emotion'
 import Dialog from './dialog'
-import {DefaultButton, GreenButton} from './buttons'
+import {DefaultButton, BlueButton} from './buttons'
 
 const hideOnMobile = css`
   @media (max-width: 600px) {
@@ -54,7 +54,7 @@ const InputCell = styled('td')`
   }
 `
 
-export default class PreferenceDialog extends PureComponent {
+export default class PreferenceDialog extends Component {
   static displayName = 'PreferenceDialog'
 
   static propTypes = {
@@ -109,7 +109,7 @@ export default class PreferenceDialog extends PureComponent {
         <DefaultButton type="button" onClick={onCancel}>
           Cancel
         </DefaultButton>
-        <GreenButton type="submit">Save</GreenButton>
+        <BlueButton type="submit">Save</BlueButton>
       </div>
     )
 

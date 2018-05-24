@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
 import {loadPreferences, savePreferences} from './preferences'
 import fetchDestinations from './fetch-destinations'
@@ -64,7 +64,7 @@ export default class ConsentManagerBuilder extends Component {
       return null
     }
 
-    return children({
+    return children[0]({
       destinations,
       newDestinations,
       preferences,

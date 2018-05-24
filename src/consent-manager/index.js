@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
 import ConsentManagerBuilder from '../consent-manager-builder'
 import Container from './container'
@@ -10,7 +10,7 @@ const initialPreferences = {
   functional: null
 }
 
-export default class ConsentManager extends PureComponent {
+export default class ConsentManager extends Component {
   static displayName = 'ConsentManager'
 
   static propTypes = {

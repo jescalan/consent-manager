@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react'
-import ReactDOM from 'react-dom'
+import {h, Component} from 'preact'
+import Portal from 'preact-portal'
 import PropTypes from 'prop-types'
-import styled, {keyframes} from 'react-emotion'
+import styled, {keyframes} from 'preact-emotion'
 import nanoid from 'nanoid'
 import fontStyles from './font-styles'
 
@@ -95,12 +95,12 @@ const Content = styled('div')`
   }
 
   a {
-    color: #47b881;
+    color: #4482ff;
     &:hover {
-      color: #64c395;
+      color: #1a57d0;
     }
     &:active {
-      color: #248953;
+      color: #1a57d0;
     }
   }
 `
@@ -110,7 +110,7 @@ const Buttons = styled('div')`
   text-align: right;
 `
 
-export default class Dialog extends PureComponent {
+export default class Dialog extends Component {
   static displayName = 'Dialog'
 
   static propTypes = {
@@ -134,6 +134,7 @@ export default class Dialog extends PureComponent {
     this.titleId = nanoid()
 
     this.container = document.createElement('div')
+    this.container.setAttribute('id', 'consent-manager-dialog')
     this.container.setAttribute('data-consent-manager-dialog', '')
     document.body.appendChild(this.container)
   }
@@ -141,44 +142,44 @@ export default class Dialog extends PureComponent {
   render() {
     const {onCancel, onSubmit, title, children, buttons, width} = this.props
 
-    const dialog = (
-      <Overlay onClick={this.handleOverlayClick}>
-        <Root
-          innerRef={this.handleRootRef}
-          role="dialog"
-          aria-modal
-          aria-labelledby={this.titleId}
-          width={width}
-        >
-          <Header>
-            <Title id={this.titleId}>{title}</Title>
-            {onCancel && (
-              <HeaderCancelButton
-                onClick={onCancel}
-                title="Cancel"
-                aria-label="Cancel"
-              >
-                ✕
-              </HeaderCancelButton>
-            )}
-          </Header>
+    return (
+      <Portal into="#consent-manager-dialog">
+        <Overlay onClick={this.handleOverlayClick}>
+          <Root
+            ref={this.handleRootRef}
+            role="dialog"
+            aria-modal
+            aria-labelledby={this.titleId}
+            width={width}
+          >
+            <Header>
+              <Title id={this.titleId}>{title}</Title>
+              {onCancel && (
+                <HeaderCancelButton
+                  onClick={onCancel}
+                  title="Cancel"
+                  aria-label="Cancel"
+                >
+                  ✕
+                </HeaderCancelButton>
+              )}
+            </Header>
 
-          <Form innerRef={this.handleFormRef} onSubmit={onSubmit}>
-            <Content>{children}</Content>
+            <Form ref={this.handleFormRef} onSubmit={onSubmit}>
+              <Content>{children}</Content>
 
-            <Buttons>{buttons}</Buttons>
-          </Form>
-        </Root>
-      </Overlay>
+              <Buttons>{buttons}</Buttons>
+            </Form>
+          </Root>
+        </Overlay>
+      </Portal>
     )
-
-    return ReactDOM.createPortal(dialog, this.container)
   }
 
   componentDidMount() {
     const {innerRef} = this.props
 
-    this.form.querySelector('input,button').focus()
+    this.form.base.querySelector('input,button').focus()
     document.body.addEventListener('keydown', this.handleEsc, false)
     document.body.style.overflow = 'hidden'
 
@@ -207,7 +208,7 @@ export default class Dialog extends PureComponent {
     const {onCancel} = this.props
 
     // Ignore propogated clicks from inside the dialog
-    if (onCancel && !this.root.contains(e.target)) {
+    if (onCancel && !this.root.base.contains(e.target)) {
       onCancel()
     }
   }

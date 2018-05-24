@@ -1,5 +1,5 @@
 import EventEmitter from 'events'
-import React, {PureComponent} from 'react'
+import {h, Component} from 'preact'
 import PropTypes from 'prop-types'
 import Banner from './banner'
 import PreferenceDialog from './preference-dialog'
@@ -12,7 +12,7 @@ export function openDialog() {
   emitter.emit('openDialog')
 }
 
-export default class Container extends PureComponent {
+export default class Container extends Component {
   static displayName = 'Container'
 
   static propTypes = {
