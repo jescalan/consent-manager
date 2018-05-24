@@ -19,7 +19,7 @@
     "standalone"
   ],
   "scripts": {
-    "test": "xo && ava",
+    "test": "echo 'not yet converted'",
     "prepublishOnly": "yarn clean && yarn run build && yarn run deploy-storybook",
     "dev": "start-storybook -p 9009",
     "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir commonjs --source-maps inline",
