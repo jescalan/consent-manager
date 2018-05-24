@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp-tmp/consent-manager",
-  "version": "1.0.2",
+  "version": "0.0.0",
   "description": "Drop-in consent management plugin for analytics.js",
   "keywords": [
     "gdpr",
