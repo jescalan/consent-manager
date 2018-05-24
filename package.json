@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp-tmp/consent-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Drop-in consent management plugin for analytics.js",
   "keywords": [
     "gdpr",
@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "test": "echo 'not yet converted'",
-    "prepublishOnly": "yarn clean && yarn run build && yarn run deploy-storybook",
+    "prepublishOnly": "yarn clean && yarn run build",
     "dev": "start-storybook -p 9009",
     "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir commonjs --source-maps inline",
     "build-esm": "BABEL_ENV=esm babel src --out-dir esm --source-maps inline",
