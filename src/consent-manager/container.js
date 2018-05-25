@@ -1,10 +1,10 @@
 import EventEmitter from 'events'
-import {h, Component} from 'preact'
+import { h, Component } from 'preact'
 import PropTypes from 'prop-types'
 import Banner from './banner'
 import PreferenceDialog from './preference-dialog'
 import CancelDialog from './cancel-dialog'
-import {ADVERTISING_CATEGORIES, FUNCTIONAL_CATEGORIES} from './categories'
+import { ADVERTISING_CATEGORIES, FUNCTIONAL_CATEGORIES } from './categories'
 
 const emitter = new EventEmitter()
 
@@ -52,7 +52,7 @@ export default class Container extends Component {
       cancelDialogTitle,
       cancelDialogContent
     } = this.props
-    const {isDialogOpen, isCancelling} = this.state
+    const { isDialogOpen, isCancelling } = this.state
     const marketingDestinations = []
     const advertisingDestinations = []
     const functionalDestinations = []
@@ -112,7 +112,7 @@ export default class Container extends Component {
   }
 
   componentDidMount() {
-    const {isConsentRequired, implyConsentOnInteraction} = this.props
+    const { isConsentRequired, implyConsentOnInteraction } = this.props
 
     emitter.on('openDialog', this.openDialog)
 
@@ -151,9 +151,9 @@ export default class Container extends Component {
   }
 
   handleBannerAccept = () => {
-    const {saveConsent} = this.props
+    const { saveConsent } = this.props
 
-    saveConsent()
+    saveConsent(undefined, true)
   }
 
   handleBodyClick = e => {
@@ -186,7 +186,7 @@ export default class Container extends Component {
   }
 
   handleCategoryChange = (category, value) => {
-    const {setPreferences} = this.props
+    const { setPreferences } = this.props
 
     setPreferences({
       [category]: value
@@ -194,16 +194,16 @@ export default class Container extends Component {
   }
 
   handleSave = () => {
-    const {saveConsent} = this.props
+    const { saveConsent } = this.props
 
     this.setState({
       isDialogOpen: false
     })
-    saveConsent()
+    saveConsent(undefined, true)
   }
 
   handleCancel = () => {
-    const {resetPreferences, newDestinations} = this.props
+    const { resetPreferences, newDestinations } = this.props
 
     this.setState({
       isDialogOpen: false
@@ -227,7 +227,7 @@ export default class Container extends Component {
   }
 
   handleCancelConfirm = () => {
-    const {resetPreferences} = this.props
+    const { resetPreferences } = this.props
 
     this.setState({
       isCancelling: false
