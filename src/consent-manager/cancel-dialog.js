@@ -22,7 +22,7 @@ export default class CancelDialog extends Component {
         <DefaultButton type="button" onClick={onBack}>
           Go Back
         </DefaultButton>
-        <RedButton type="submit">Yes, Cancel</RedButton>
+        <RedButton type="submit">Cancel &amp; Accept</RedButton>
       </div>
     )
 
